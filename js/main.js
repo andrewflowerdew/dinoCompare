@@ -18,10 +18,15 @@ function 	createForm() 									{
 			let formLastNameInput 							= document.createElement("input");
 			let formLastNameInputLabel 						= document.createElement("label");
 			let formHeightFeetInput 						= document.createElement("input");
+			let formHeightFeetInputLabel 					= document.createElement("label");
 			let formHeightInchesInput 						= document.createElement("input");
+			let formHeightInchesInputLabel 					= document.createElement("label");
 			let formWeightInput 							= document.createElement("input");
+			let formWeightInputLabel 						= document.createElement("label");
 			let formDietSelect 								= document.createElement("select");
+			let formDietSelectLabel 						= document.createElement("label");
 			let formSubmitButton 							= document.createElement("Button");
+			let formSubmitButtonLabel 						= document.createElement("label");
 
 			formPageTitleContainer.setAttribute("class", "formPageTitleContainer");
 			formPageTitleContainer.setAttribute("id", "formPageTitleContainer");
@@ -54,7 +59,14 @@ function 	createForm() 									{
          	formContainer.appendChild(formLastNameInputLabel);
 			formContainer.appendChild(formLastNameInput);
 
-
+			formHeightFeetInput.setAttribute("class", "formHeightFeetInput");
+			formHeightFeetInput.setAttribute("id", "formHeightFeetInput");
+			formHeightFeetInput.name                   	   	= "humanHeightFeet";
+			formHeightFeetInput.type                   	   	= "text";
+			formHeightFeetInputLabel.htmlFor 				= "formHeightFeetInput";
+         	formHeightFeetInputLabel.innerHTML 				= "Height in Feet";
+         	formContainer.appendChild(formHeightFeetInputLabel);
+			formContainer.appendChild(formHeightFeetInput);
 
 
 }
