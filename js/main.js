@@ -24,6 +24,9 @@ function 	createForm() 									{
 			let formWeightInput 							= document.createElement("input");
 			let formWeightInputLabel 						= document.createElement("label");
 			let formDietSelect 								= document.createElement("select");
+			let optionHerbivore  							= document.createElement("option");
+			let optionCarnivore  							= document.createElement("option");
+			let optionOmnivore  							= document.createElement("option");
 			let formDietSelectLabel 						= document.createElement("label");
 			let formSubmitButton 							= document.createElement("Button");
 			let formSubmitButtonLabel 						= document.createElement("label");
@@ -54,8 +57,8 @@ function 	createForm() 									{
 			formLastNameInput.setAttribute("id", "formLastNameInput");
 			formLastNameInput.name                   	   	= "humanLastName";
 			formLastNameInput.type                   	   	= "text";
-			formLastNameInputLabel.htmlFor 					= "formFirstNameInput";
-         	formLastNameInputLabel.innerHTML 				= "First Name";
+			formLastNameInputLabel.htmlFor 					= "formLastNameInput";
+         	formLastNameInputLabel.innerHTML 				= "Last Name";
          	formContainer.appendChild(formLastNameInputLabel);
 			formContainer.appendChild(formLastNameInput);
 
@@ -67,6 +70,39 @@ function 	createForm() 									{
          	formHeightFeetInputLabel.innerHTML 				= "Height in Feet";
          	formContainer.appendChild(formHeightFeetInputLabel);
 			formContainer.appendChild(formHeightFeetInput);
+
+			formHeightInchesInput.setAttribute("class", "formHeightInchesInput");
+			formHeightInchesInput.setAttribute("id", "formHeightInchesInput");
+			formHeightInchesInput.name                   	= "humanHeightInches";
+			formHeightInchesInput.type                   	= "text";
+			formHeightInchesInputLabel.htmlFor 				= "formHeightInchesInput";
+         	formHeightInchesInputLabel.innerHTML 			= "Height in Inches";
+         	formContainer.appendChild(formHeightInchesInputLabel);
+			formContainer.appendChild(formHeightInchesInput);
+
+			formWeightInput.setAttribute("class", "formWeightInput");
+			formWeightInput.setAttribute("id", "formWeightInput");
+			formWeightInput.name                   	   		= "humanWeightPounds";
+			formWeightInput.type                   			= "text";
+			formWeightInputLabel.htmlFor 					= "formWeightInput";
+         	formWeightInputLabel.innerHTML 					= "Weight in Pounds";
+         	formContainer.appendChild(formWeightInputLabel);
+			formContainer.appendChild(formWeightInput);
+
+			formDietSelect.setAttribute("class", "formDietSelect");
+			formDietSelect.setAttribute("id", "formDietSelect");
+			formDietSelect.name                   	   		= "humanDiet";
+			formDietSelect.type                   			= "text";
+			formDietSelectLabel.htmlFor 					= "formDietSelect";
+         	formDietSelectLabel.innerHTML 					= "Diet";
+         	formContainer.appendChild(formDietSelectLabel);
+			formContainer.appendChild(formDietSelect);
+			optionHerbivore.text  							= "Herbivore";
+			optionCarnivore.text  							= "Carnivore";
+			optionOmnivore.text  							= "Omnivore";
+			formDietSelect.add(optionHerbivore);
+			formDietSelect.add(optionCarnivore);
+			formDietSelect.add(optionOmnivore);
 
 
 }
