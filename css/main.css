@@ -28,6 +28,7 @@ select 										{
 .formPage 									{
 											 display:  							grid;
 											 align-content:  					space-around;
+											 grid-template-rows:  				1fr 4fr 1fr;
 											 width:  							100vw;
 											 height:  							100vh;
 }
@@ -49,3 +50,27 @@ select 										{
 											 height:  							50vh;
 											 margin:  							auto;
 }
+
+.formCompareContainer 						{
+											 display:  							grid;
+											 width: 							80vw;
+											 height: 							10vh;
+											 margin: 							auto;
+}
+
+.formSubmitButton 							{
+											 display:  							grid;
+											 align-content:  					center;
+											 margin: 							auto;
+											 height: 							7.5vh;
+											 width:  							25vw;
+											 font-size:  						3vh;
+											 border: 							none;
+											 border-radius:  					15%;
+											 background-color:  				lightblue;
+}
+
+
+
+
+
