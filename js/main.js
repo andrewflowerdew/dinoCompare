@@ -200,12 +200,16 @@ function	createDinoDisplay()											{
 
 			document.getElementById("dinoPage").style.display		  	= "grid";
 
+			let dinoPage  												= document.getElementById('dinoPage');
+
+			let gridContainer											= document.createElement("div");
+			gridContainer.setAttribute("id", "gridContainer");
+			gridContainer.setAttribute("class", "gridContainer");
+			dinoPage.appendChild(gridContainer);
 
 			let boxesCreated                                			= 0;
 
 			let numberOfBoxes											= 8;
-
-			const gridContainer 										= document.getElementById("dinoPage");
 
 			for (let i = numberOfBoxes-1; i >= 0; i--) 		         	{
 
