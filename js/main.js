@@ -28,8 +28,9 @@ function 	createForm() 									{
 			let optionCarnivore  							= document.createElement("option");
 			let optionOmnivore  							= document.createElement("option");
 			let formDietSelectLabel 						= document.createElement("label");
+			let formCompareContainer 						= document.createElement("div");
 			let formSubmitButton 							= document.createElement("Button");
-			let formSubmitButtonLabel 						= document.createElement("label");
+
 
 			formPageTitleContainer.setAttribute("class", "formPageTitleContainer");
 			formPageTitleContainer.setAttribute("id", "formPageTitleContainer");
@@ -52,15 +53,6 @@ function 	createForm() 									{
          	formFirstNameInputLabel.innerHTML 				= "First Name";
          	formContainer.appendChild(formFirstNameInputLabel);
 			formContainer.appendChild(formFirstNameInput);
-
-			formLastNameInput.setAttribute("class", "formLastNameInput");
-			formLastNameInput.setAttribute("id", "formLastNameInput");
-			formLastNameInput.name                   	   	= "humanLastName";
-			formLastNameInput.type                   	   	= "text";
-			formLastNameInputLabel.htmlFor 					= "formLastNameInput";
-         	formLastNameInputLabel.innerHTML 				= "Last Name";
-         	formContainer.appendChild(formLastNameInputLabel);
-			formContainer.appendChild(formLastNameInput);
 
 			formHeightFeetInput.setAttribute("class", "formHeightFeetInput");
 			formHeightFeetInput.setAttribute("id", "formHeightFeetInput");
@@ -104,6 +96,29 @@ function 	createForm() 									{
 			formDietSelect.add(optionCarnivore);
 			formDietSelect.add(optionOmnivore);
 
+			formCompareContainer.setAttribute("class", "formCompareContainer");
+			formCompareContainer.setAttribute("id", "formCompareContainer");
+			formPageDiv.appendChild(formCompareContainer);
+
+
+			formSubmitButton.setAttribute("class", "formSubmitButton");
+			formSubmitButton.setAttribute("id", "formSubmitButton");
+			formSubmitButton.textContent = 'Compare to Dinos';
+			formCompareContainer.appendChild(formSubmitButton);
+			document.getElementById('formSubmitButton').onclick  =  createHuman;
+
+}
+
+function 	createHuman() 									{
+
+			let newHumanData                                = {};
+         	newHumanData.firstName                   		= document.getElementById("formFirstNameInput").value;
+         	newHumanData.heightFeet                 		= document.getElementById("formHeightFeetInput").value;
+         	newHumanData.heightInches                 		= document.getElementById("formHeightInchesInput").value;
+         	newHumanData.weight                   			= document.getElementById("formWeightInput").value;
+         	newHumanData.diet                   			= document.getElementById("formDietSelect").value;
+
+         	console.log("Human: ", newHumanData)
 
 }
 
