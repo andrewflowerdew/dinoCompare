@@ -1,9 +1,94 @@
 (function()  												{
 
+let dinoDataObject 											= [];
+
 function 	setup() 										{
+
+			getDinoData();
 
 			createForm();
 
+}
+
+function getDinoData() 										{
+
+		 let dinoDb                          				= `../data/dino.json`;
+
+         fetch(dinoDb)
+              .then(function(response)                   	{
+
+                 return response.json();
+
+              }).then(function(localDinoData)            	{
+
+              	 dinoDataObject 							= localDinoData;
+
+    		  });
+
+}
+
+function populateDinoData(i, dataType, factChoice) 		{
+
+		 if (dataType === "species") 								{
+
+		 	let speciesText 											= dinoDataObject["Dinos"][i]["species"];
+
+		 	return speciesText;
+
+		 }
+
+		 if (dataType === "image") 								{
+
+		 	let speciesImage 											= '../'+dinoDataObject["Dinos"][i]["images"];
+
+		 	return speciesImage;
+
+		 }
+
+		 if (dataType === "fact") 									{
+
+		 	let speciesFact;
+
+		 	if (factChoice === 1) 									{
+
+		 		speciesFact 								    		= "Weight: " + dinoDataObject["Dinos"][i]["weight"];
+
+		 	}
+
+		 	else if (factChoice === 2) 							{
+
+		 		speciesFact 								    		= "Height: " + dinoDataObject["Dinos"][i]["height"];
+		 		
+		 	}
+
+		 	else if (factChoice === 3) 							{
+
+		 		speciesFact 								    		= "Diet: " + dinoDataObject["Dinos"][i]["diet"];
+		 		
+		 	}
+
+		 	else if (factChoice === 4) 							{
+
+		 		speciesFact 								    		= "Where: " + dinoDataObject["Dinos"][i]["where"];
+		 		
+		 	}
+
+		 	else if (factChoice === 5) 							{
+
+		 		speciesFact 								    		= "When: " + dinoDataObject["Dinos"][i]["when"];
+		 		
+		 	}
+
+		 	else if (factChoice === 6) 							{
+
+		 		speciesFact 								    		= "Fact: " + dinoDataObject["Dinos"][i]["fact"];
+		 		
+		 	}
+
+		 	return speciesFact;
+
+		 }
+		 
 }
 
 function 	createForm() 									{
@@ -109,6 +194,89 @@ function 	createForm() 									{
 
 }
 
+function	createDinoDisplay()											{
+
+			document.getElementById("formPage").style.display 	  		= "none";
+
+			document.getElementById("dinoPage").style.display		  	= "grid";
+
+
+			let boxesCreated                                			= 0;
+
+			let numberOfBoxes											= 8;
+
+			const gridContainer 										= document.getElementById("dinoPage");
+
+			for (let i = numberOfBoxes-1; i >= 0; i--) 		         	{
+
+				boxesCreated++;
+				
+				let speciesText 										= dinoDataObject["Dinos"][i]["species"];
+
+				let box 												= 	document.createElement("div");
+				box.setAttribute("id", "box"+i);
+				box.setAttribute("class", "box");
+				gridContainer.appendChild(box);
+
+				let speciesTextElement									= document.createElement("p");
+				speciesTextElement.setAttribute("id", "speciesTitle"+i);
+				speciesTextElement.setAttribute("class", "speciesTitle");
+				speciesTextElement.innerHTML 							= populateDinoData(i, "species");
+				box.appendChild(speciesTextElement);
+
+				let speciesImageElement									= document.createElement("img");
+				speciesImageElement.setAttribute("id", "speciesImageElement"+i);
+				speciesImageElement.setAttribute("class", "speciesImageElement");
+				speciesImageElement.src 								= populateDinoData(i, "image");
+				speciesImageElement.setAttribute("alt", "Image of " + speciesText);
+				box.appendChild(speciesImageElement);
+
+				let speciesFactElement									= document.createElement("p");
+				speciesFactElement.setAttribute("id", "speciesFactElement"+i);
+				speciesFactElement.setAttribute("class", "speciesFactElement");
+				let factChoice 											= Math.floor((Math.random() * 6) + 1);
+				speciesFactElement.innerHTML 							= populateDinoData(i, "fact", factChoice);
+				box.appendChild(speciesFactElement);
+
+				if (i===4) 												{
+
+						let box 										= document.createElement("div");
+						box.setAttribute("id", "humanBox");
+						box.setAttribute("class", "humanBox");
+
+						let speciesTextElement							= document.createElement("p");
+						speciesTextElement.setAttribute("id", "speciesTitle"+i);
+						speciesTextElement.setAttribute("class", "speciesTitle");
+						speciesTextElement.innerHTML 					= "Human";
+						box.appendChild(speciesTextElement);
+
+						if (dinoDataObject["Human"]) 					{
+
+								let humanData 							= dinoDataObject["Human"];
+
+								let speciesImageElement					= document.createElement("img");
+								speciesImageElement.setAttribute("id", "speciesImageElement"+i);
+								speciesImageElement.setAttribute("class", "speciesImageElement");
+								speciesImageElement.src 				= humanData["image"];
+								speciesImageElement.setAttribute("alt", "Image of a Human");
+								box.appendChild(speciesImageElement);
+
+								let speciesFactElement					= document.createElement("p");
+								speciesFactElement.setAttribute("id", "speciesFactElement"+i);
+								speciesFactElement.setAttribute("class", "speciesFactElement");
+								let factChoice 							= Math.floor((Math.random() * 6) + 1);
+								speciesFactElement.innerHTML 			= populateDinoData(i, "fact", factChoice);
+								box.appendChild(speciesFactElement);
+
+						}
+
+						gridContainer.appendChild(box);
+
+				}
+
+			}
+}
+
 function 	createHuman() 									{
 
 			let newHumanData                                = {};
@@ -118,7 +286,7 @@ function 	createHuman() 									{
          	newHumanData.weight                   			= document.getElementById("formWeightInput").value;
          	newHumanData.diet                   			= document.getElementById("formDietSelect").value;
 
-         	console.log("Human: ", newHumanData)
+         	createDinoDisplay();
 
 }
 
