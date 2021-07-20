@@ -306,7 +306,7 @@ function	createDinoDisplay()											{
 						let speciesFactElement							= document.createElement("p");
 						speciesFactElement.setAttribute("id", "speciesFactElement"+i);
 						speciesFactElement.setAttribute("class", "speciesFactElement");
-						let factChoice 									= Math.floor((Math.random() * 5) + 1);
+						let factChoice 									= Math.floor((Math.random() * 4) + 1);
 						speciesFactElement.innerHTML 					= populateHumanData(2);
 						box.appendChild(speciesFactElement);
 
@@ -329,7 +329,11 @@ function  	populateHumanData(factChoice) 					{
 
 			}
 
-			
+			if (factChoice === 3) 							{
+
+				return newHumanData["heightFeet"];
+
+			}
 
 			console.log("Chosen Human Data: ", newHumanData[choice]);
 
@@ -337,11 +341,22 @@ function  	populateHumanData(factChoice) 					{
 
 function 	createHuman() 									{
 
+			let humanHeightFeetText							= document.getElementById("formHeightFeetInput").value;
+			let humanHeightInchesText						= document.getElementById("formHeightInchesInput").value;
+			let humanFeetInFeetNumber						= parseInt(humanHeightFeetText,10);
+			let humanHeightInchesNumber 					= parseInt(humanHeightInchesText,10);
+			let totalHumanHeightInches 						= (humanFeetInFeetNumber*12)+humanHeightInchesNumber;
+
          	newHumanData.firstName                   		= document.getElementById("formFirstNameInput").value;
-         	newHumanData.heightFeet                 		= document.getElementById("formHeightFeetInput").value;
-         	newHumanData.heightInches                 		= document.getElementById("formHeightInchesInput").value;
+            newHumanData.height 							= totalHumanHeightInches;
          	newHumanData.weight                   			= document.getElementById("formWeightInput").value;
          	newHumanData.diet                   			= document.getElementById("formDietSelect").value;
+
+         	console.log("Human height in feet: ", humanFeetInFeetNumber);
+         	console.log("Human inches: ", humanHeightInchesNumber);
+         	console.log("Total human height in inches: ", totalHumanHeightInches);
+
+         	console.log("New Human Data: ", newHumanData);
 
          	createDinoDisplay();
 
