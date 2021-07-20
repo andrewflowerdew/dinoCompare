@@ -93,13 +93,27 @@ function populateDinoData(i, dataType, factChoice) 		{
 
 function 	createForm() 												{
 
+			if (document.getElementById('gridContainer'))  				{
+
+				let gridContainer 										= document.getElementById('gridContainer');
+				gridContainer.parentNode.removeChild(gridContainer);
+
+				let newHumanButton 										= document.getElementById('startNewHumanButton');
+				newHumanButton.parentNode.removeChild(newHumanButton);
+
+				let startNewHumanContainer 								= document.getElementById('startNewHumanContainer');
+				startNewHumanContainer.parentNode.removeChild(startNewHumanContainer);
+
+
+			}
+
 			if (document.getElementById("formPageTitleContainer")) 		{
 
 				document.getElementById("formFirstNameInput").value		= "";
          		document.getElementById("formHeightFeetInput").value 	= "";
          		document.getElementById("formHeightInchesInput").value 	= "";
          		document.getElementById("formWeightInput").value 		= "";
-         		document.getElementById("formDietSelect").value 		= "";
+         		document.getElementById("formDietSelect").value 		= "Herbivore";
 
          		document.getElementById("formPage").style.display 	  	= "grid";
 				document.getElementById("dinoPage").style.display		= "none";
@@ -203,7 +217,7 @@ function 	createForm() 												{
 				formSubmitButton.setAttribute("id", "formSubmitButton");
 				formSubmitButton.textContent = 'Compare to Dinos';
 				formCompareContainer.appendChild(formSubmitButton);
-				document.getElementById('formSubmitButton').onclick  	=  createDinoDisplay;
+				document.getElementById('formSubmitButton').onclick  	=  createHuman;
 
 			}
 
@@ -215,6 +229,8 @@ function	createDinoDisplay()											{
 			document.getElementById("dinoPage").style.display		  	= "grid";
 
 			let dinoPage  												= document.getElementById('dinoPage');
+
+			
 
 			let gridContainer											= document.createElement("div");
 			gridContainer.setAttribute("id", "gridContainer");
@@ -315,6 +331,8 @@ function 	createHuman() 									{
          	newHumanData.heightInches                 		= document.getElementById("formHeightInchesInput").value;
          	newHumanData.weight                   			= document.getElementById("formWeightInput").value;
          	newHumanData.diet                   			= document.getElementById("formDietSelect").value;
+
+         	console.log("Human data: ", newHumanData);
 
          	createDinoDisplay();
 
