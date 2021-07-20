@@ -1,6 +1,8 @@
 (function()  												{
 
 let dinoDataObject 											= [];
+let newHumanData                                			= {};
+
 
 function 	setup() 										{
 
@@ -296,14 +298,10 @@ function	createDinoDisplay()											{
 						speciesTextElement.innerHTML 					= "Human";
 						box.appendChild(speciesTextElement);
 
-						if (dinoDataObject["Human"]) 					{
-
-								let humanData 							= dinoDataObject["Human"];
-
 								let speciesImageElement					= document.createElement("img");
 								speciesImageElement.setAttribute("id", "speciesImageElement"+i);
 								speciesImageElement.setAttribute("class", "speciesImageElement");
-								speciesImageElement.src 				= humanData["image"];
+								speciesImageElement.src 				= "../"+"img/"+"human.jpg";
 								speciesImageElement.setAttribute("alt", "Image of a Human");
 								box.appendChild(speciesImageElement);
 
@@ -314,7 +312,6 @@ function	createDinoDisplay()											{
 								speciesFactElement.innerHTML 			= populateDinoData(i, "fact", factChoice);
 								box.appendChild(speciesFactElement);
 
-						}
 
 						gridContainer.appendChild(box);
 
@@ -325,7 +322,6 @@ function	createDinoDisplay()											{
 
 function 	createHuman() 									{
 
-			let newHumanData                                = {};
          	newHumanData.firstName                   		= document.getElementById("formFirstNameInput").value;
          	newHumanData.heightFeet                 		= document.getElementById("formHeightFeetInput").value;
          	newHumanData.heightInches                 		= document.getElementById("formHeightInchesInput").value;
