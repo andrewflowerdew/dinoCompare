@@ -232,8 +232,6 @@ function	createDinoDisplay()											{
 
 			let dinoPage  												= document.getElementById('dinoPage');
 
-			
-
 			let gridContainer											= document.createElement("div");
 			gridContainer.setAttribute("id", "gridContainer");
 			gridContainer.setAttribute("class", "gridContainer");
@@ -298,19 +296,19 @@ function	createDinoDisplay()											{
 						speciesTextElement.innerHTML 					= "Human";
 						box.appendChild(speciesTextElement);
 
-								let humanImageElement					= document.createElement("img");
-								humanImageElement.setAttribute("id", "humanImageElement"+i);
-								humanImageElement.setAttribute("class", "humanImageElement");
-								humanImageElement.src 					= "../"+"img/"+"human.jpg";
-								humanImageElement.setAttribute("alt", "Image of a Human");
-								box.appendChild(humanImageElement);
+						let humanImageElement							= document.createElement("img");
+						humanImageElement.setAttribute("id", "humanImageElement"+i);
+						humanImageElement.setAttribute("class", "humanImageElement");
+						humanImageElement.src 							= "../"+"img/"+"human.jpg";
+						humanImageElement.setAttribute("alt", "Image of a Human");
+						box.appendChild(humanImageElement);
 
-								let speciesFactElement					= document.createElement("p");
-								speciesFactElement.setAttribute("id", "speciesFactElement"+i);
-								speciesFactElement.setAttribute("class", "speciesFactElement");
-								let factChoice 							= Math.floor((Math.random() * 6) + 1);
-								speciesFactElement.innerHTML 			= populateDinoData(i, "fact", factChoice);
-								box.appendChild(speciesFactElement);
+						let speciesFactElement							= document.createElement("p");
+						speciesFactElement.setAttribute("id", "speciesFactElement"+i);
+						speciesFactElement.setAttribute("class", "speciesFactElement");
+						let factChoice 									= Math.floor((Math.random() * 5) + 1);
+						speciesFactElement.innerHTML 					= populateHumanData(2);
+						box.appendChild(speciesFactElement);
 
 
 						gridContainer.appendChild(box);
@@ -320,6 +318,23 @@ function	createDinoDisplay()											{
 			}
 }
 
+function  	populateHumanData(factChoice) 					{
+
+			let choice;
+			let displayData;
+
+			if (factChoice === 2) 							{
+
+				return newHumanData["heightFeet"];
+
+			}
+
+			
+
+			console.log("Chosen Human Data: ", newHumanData[choice]);
+
+}
+
 function 	createHuman() 									{
 
          	newHumanData.firstName                   		= document.getElementById("formFirstNameInput").value;
@@ -327,8 +342,6 @@ function 	createHuman() 									{
          	newHumanData.heightInches                 		= document.getElementById("formHeightInchesInput").value;
          	newHumanData.weight                   			= document.getElementById("formWeightInput").value;
          	newHumanData.diet                   			= document.getElementById("formDietSelect").value;
-
-         	console.log("Human data: ", newHumanData);
 
          	createDinoDisplay();
 
