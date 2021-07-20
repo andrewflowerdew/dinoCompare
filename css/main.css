@@ -116,10 +116,16 @@ select 										{
 												 font-size:  							2.5vh;
 }
 
-.speciesImageElement 							{
+.speciesImageElement,
+.humanImageElement	 							{
 												 width: 								30vw;
 												 height: 								auto;
 												 justify-self: 							center;
+}
+
+.humanImageElement								{
+												 width: 								20vw;
+												 margin-bottom: 						1vh;
 }
 
 .speciesFactElement 							{
@@ -144,6 +150,8 @@ select 										{
 
 .humanBox 										{
 												 padding: 								5px;
+												 display:  								grid;
+												 grid-template-rows:  					1fr 2fr 1fr;
 												 background-color: 						#bae8ba;
 												 border-radius: 						20px;
 												 min-height: 							25vh;
@@ -151,6 +159,7 @@ select 										{
 												 min-width: 						    80vw;
 												 max-width: 							80vw;
 												 margin-bottom: 						2vh;
+												 padding:  								10px;
 }
 
 @media only screen 

@@ -298,12 +298,12 @@ function	createDinoDisplay()											{
 						speciesTextElement.innerHTML 					= "Human";
 						box.appendChild(speciesTextElement);
 
-								let speciesImageElement					= document.createElement("img");
-								speciesImageElement.setAttribute("id", "speciesImageElement"+i);
-								speciesImageElement.setAttribute("class", "speciesImageElement");
-								speciesImageElement.src 				= "../"+"img/"+"human.jpg";
-								speciesImageElement.setAttribute("alt", "Image of a Human");
-								box.appendChild(speciesImageElement);
+								let humanImageElement					= document.createElement("img");
+								humanImageElement.setAttribute("id", "humanImageElement"+i);
+								humanImageElement.setAttribute("class", "humanImageElement");
+								humanImageElement.src 					= "../"+"img/"+"human.jpg";
+								humanImageElement.setAttribute("alt", "Image of a Human");
+								box.appendChild(humanImageElement);
 
 								let speciesFactElement					= document.createElement("p");
 								speciesFactElement.setAttribute("id", "speciesFactElement"+i);
